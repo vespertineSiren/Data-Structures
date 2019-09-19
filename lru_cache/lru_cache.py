@@ -52,10 +52,10 @@ class LRUCache:
         if self.list.head is not found:
           self.list.delete(found)
           self.list.add_to_head(found)
-      else:
-        new_node = DoublyLinkedList(value)
-        if self.list.get_max() == self.limit:
-          self.storage.pop(key)
-          self.list.delete(found)
-        self.list.add_to_head(new_node)
-        self.storage[key] = new_node
+        else:
+          new_node = DoublyLinkedList(value)
+          if self.list.get_max() == self.limit:
+            self.storage.pop(key)
+            self.list.delete(found)
+          self.list.add_to_head(new_node)
+          self.storage[key] = new_node
