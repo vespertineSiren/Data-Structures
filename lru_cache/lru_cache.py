@@ -5,7 +5,7 @@ class LRUCache:
     """
   Our LRUCache class keeps track of the max number of nodes it
   can hold, the current number of nodes it is holding, a doubly-
-  linked list that holds the key-value entries in the correct 
+  linked list that holds the key-value entries in the correct
   order, as well as a storage dict that provides fast access
   to every node stored in the cache.
   """
@@ -52,10 +52,9 @@ class LRUCache:
         if self.list.head is not found:
           self.list.delete(found)
           self.list.add_to_head(found)
-        else:
-          new_node = DoublyLinkedList(value)
-          if self.list.get_max() == self.limit:
-            self.storage.pop(key)
-            self.list.delete(found)
-          self.list.add_to_head(new_node)
-          self.storage[key] = new_node
+      else:
+        new_node = DoublyLinkedList(value)
+        if self.list.get_max() == self.limit:
+          self.storage.pop(key)
+        self.list.add_to_head(new_node)
+        self.storage[key] = new_node

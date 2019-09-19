@@ -40,14 +40,14 @@ class AVLTree:
   in the tree
   """
   def update_height(self):
-    if self.node is not None:
+    if self.node.left or self.node.right:
       if self.node.left is not None:
         self.node.left.update_height()
       if self.node.right is not None:
         self.node.right.update_height()
       self.height = 1 + max(self.node.left.height, self.node.right.height)
     else:
-      self.height = -1
+      self.height = 0
 
 
   """

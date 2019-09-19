@@ -46,23 +46,19 @@ class DoublyLinkedList:
     def __init__(self, node=None):
         self.head = node
         self.tail = node
-        self.value = node
         self.length = 1 if node is not None else 0
 
     def __len__(self):
         return self.length
 
     def add_to_head(self, value):
-        node = ListNode(value, None, self.head)
+        node = ListNode(value, None, None)
         if not self.head and not self.tail:
           self.head = node
           self.tail = node
-          self.head.prev = None
-          self.head.next = None
-          self.length = 1
         else:
+          node.next = self.head
           self.head.prev = node
-          node.prev = None
           self.head = node
           self.length += 1
 
@@ -127,10 +123,12 @@ class DoublyLinkedList:
         self.length -= 1
 
     def get_max(self):
-        current = self.head
-        max_value = -10000000
+        if not self.head:
+            return None
 
-        while current is not None:
+        max_value = self.head.value
+        current = self.head
+        while current:
             if current.value > max_value:
                 max_value = current.value
             current = current.next
